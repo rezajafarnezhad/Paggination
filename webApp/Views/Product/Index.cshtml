@@ -1,0 +1,32 @@
+﻿
+@using webApp.ViewModels
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model webApp.ViewModels.ProductViewModel
+
+
+<form id="LoadProductTable" asp-controller="Product" asp-action="LoadTable"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-mode="replace"
+      data-ajax-update="#ProductsTable">
+    <div id="ProductsTable">
+        <partial name="_ProductsTable" model="Model" />
+    </div>
+</form>
+
+
+
+
+@section Scripts{
+
+    <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+
+        function sendPage(page) {
+            $("#pageId").val(page);
+            $("#LoadProductTable").submit();
+        }
+
+    </script>
+} 
