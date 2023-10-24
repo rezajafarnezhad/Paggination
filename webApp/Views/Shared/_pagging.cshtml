@@ -1,0 +1,36 @@
+﻿
+@model webApp.ViewModels.Pagination2.Pagination
+
+@if (Model.PageCount > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @if (Model.CurrentPage > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" onclick="changePage(@(Model.CurrentPage-1))" tabindex="-1">Previous</a>
+                </li>
+            }
+        
+            @for (int page = Model.StartPage; page <=Model.EndPage; page++)
+            {
+                if (Model.PageCount > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link @((page==Model.CurrentPage)?"bg-warning":string.Empty)"  onclick="changePage(@(page))" tabindex="-1" style="cursor:pointer">
+                            @(page)
+                        </a>
+                    </li>
+                }
+           
+            }
+
+            @if (Model.CurrentPage < Model.PageCount)
+            {
+                <li class="page-item">
+                    <a class="page-link" onclick="changePage(@(Model.CurrentPage+1))" tabindex="-1">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
